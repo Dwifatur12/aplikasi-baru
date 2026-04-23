@@ -15,13 +15,7 @@ import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged }
 import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
 
 const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-  apiKey: "AIzaSyCD9vEj5slH68DumFqGgftpzOBiXxJqAno",
-  authDomain: "sapa-lapas-kalabahi.firebaseapp.com",
-  projectId: "sapa-lapas-kalabahi",
-  storageBucket: "sapa-lapas-kalabahi.firebasestorage.app",
-  messagingSenderId: "376800337443",
-  appId: "1:376800337443:web:d68366b9314b0d297b9b96",
-  measurementId: "G-LS5HKT2MVC"
+  apiKey: "mock-key", authDomain: "mock.firebaseapp.com", projectId: "mock-id"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -211,14 +205,6 @@ export default function App() {
           border-color: #10b981;
           box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), inset 0 2px 4px rgba(0,0,0,0.2);
           background: #0f172a;
-        }
-
-        .text-gradient-animate {
-          background-size: 200% auto;
-          animation: textShine 4s linear infinite;
-        }
-        @keyframes textShine {
-          to { background-position: 200% center; }
         }
 
         ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -479,7 +465,7 @@ function PublicPortal({ db, appId, showToast, firebaseUser, dataKunjungan, maste
         <div>
           <h1 className="text-5xl lg:text-7xl font-black tracking-tighter leading-[1.05] text-slate-900 dark:text-white mb-6">
             SAPA <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 text-gradient-animate">KALABAHI</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600">KALABAHI</span>
           </h1>
           
           <p className="leading-relaxed max-w-md">
@@ -661,7 +647,7 @@ function PublicPortal({ db, appId, showToast, firebaseUser, dataKunjungan, maste
             </div>
 
             {cekResult && (
-              <div className="mt-8 p-6 rounded-3xl border bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm border-slate-200 dark:border-slate-800 text-left space-y-3 animate-in zoom-in duration-300 shadow-inner">
+              <div className="mt-8 p-6 rounded-3xl border bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm border-slate-200 dark:border-slate-700 text-left space-y-3 animate-in zoom-in duration-300 shadow-inner">
                 <p className="text-[10px] font-black uppercase tracking-widest text-blue-500 mb-3 border-b border-slate-200 dark:border-slate-700 pb-3">Hasil Ditemukan</p>
                 <div>
                   <p className="text-[10px] font-bold text-slate-400 uppercase">Pengunjung</p>
@@ -1228,7 +1214,7 @@ function AdminDashboard({ dataKunjungan, db, appId, showToast, masterWbp }) {
                       <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase mt-2 flex items-center gap-1.5"><Clock size={14}/> {item.sesi}</p>
                     </td>
                     <td className="px-6 py-5 text-center">
-                      <span className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm ${item.status === 'Menunggu' ? 'bg-amber-100 text-amber-700 border border-amber-200 dark:border-amber-800' : item.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-700 border border-emerald-200 dark:border-emerald-800' : item.status === 'Selesai' ? 'bg-blue-100 text-blue-700 border border-blue-200 dark:border-blue-800' : 'bg-rose-100 text-rose-700 border border-rose-200 dark:border-rose-800'}`}>{item.status}</span>
+                      <span className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm ${item.status === 'Menunggu' ? 'bg-amber-100 text-amber-700' : item.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-700' : item.status === 'Selesai' ? 'bg-blue-100 text-blue-700' : 'bg-rose-100 text-rose-700'}`}>{item.status}</span>
                     </td>
                     <td className="px-8 py-5 text-right">
                       <div className="flex justify-end gap-2">
